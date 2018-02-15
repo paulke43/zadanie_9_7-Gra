@@ -74,6 +74,7 @@ function playerPick(playerPick) {
     computerPickElem.innerHTML = computerPick;
 
     checkRoundWinner(playerPick, computerPick);
+    checkGameWinner();
 }
 
 //Computer pick
@@ -106,15 +107,7 @@ function checkRoundWinner(playerPick, computerPick) {
         computer.score++;
     }
     setGamePoints();
-    if (player.score === 10) {
-    	alert("" + player.name + " wins!");
-    	resetScores();
-    }
-    if (computer.score === 10){
-    	alert("computer wins!");
-    	resetScores();
-    }
-
+    checkGameWinner();
 }
 
 //Scores
@@ -123,8 +116,19 @@ function setGamePoints() {
     computerPointsElem.innerHTML = computer.score;
 }
 
+function checkGameWinner() {
+    if (player.score === 10) {
+        alert("" + player.name + " wins!");
+        resetScores();
+    }
+    if (computer.score === 10){
+        alert("computer wins!");
+        resetScores();
+    }
+}
+
 //Reset scores
-function resetScores(){
+function resetScores() {
 	player.score = 0;
 	computer.score = 0;
 	setGamePoints();
